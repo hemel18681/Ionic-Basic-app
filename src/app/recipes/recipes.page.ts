@@ -14,6 +14,7 @@ export class RecipesPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('coming here');
     this.recipes = this.recipesService.getAllRecipes();
   }
 

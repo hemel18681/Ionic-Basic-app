@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Recipe } from '../recipe.model';
@@ -18,12 +18,12 @@ export class RecipeDetailPage implements OnInit {
     private recipesService: RecipesService,
     private router: Router,
     private alertCtrl: AlertController,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap=>{
       if(!paramMap.has('recipeId')){
-        this.router.navigate(['/recipes']);
+        this.router.navigate(['']);
         return;
       }
       else{
@@ -44,8 +44,9 @@ export class RecipeDetailPage implements OnInit {
         {
           text: 'Delete',
           handler:()=>{
-            this.recipesService.deleteRecipe(this.loadedRecipe.id);
-            this.router.navigate(['/recipes']);
+            this.router.navigate(['/recipes']).then(()=>{
+              this.recipesService.deleteRecipe(this.loadedRecipe.id);
+            });
           }
         }
       ]
