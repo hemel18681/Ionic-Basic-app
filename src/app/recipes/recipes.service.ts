@@ -10,7 +10,7 @@ export class RecipesService {
   private recipes: Recipe[] = [
     {
       id: 'r1',
-      title: 'T-bone Steak',
+      title: 'Sherloin Steak',
       imageUrl: 'https://www.staffordbros.com/wp-content/uploads/2020/10/steak-and-chips-vip-sauce.jpg',
       ingredients: ['French Fries', 'Beef', 'Salad']
     },
